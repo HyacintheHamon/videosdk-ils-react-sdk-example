@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, createRef } from "react";
 import {
   Constants,
   createCameraVideoTrack,
+  createMicrophoneAudioTrack,
   useMeeting,
   usePubSub,
 } from "@videosdk.live/react-sdk";
@@ -156,11 +157,13 @@ export function ILSContainer({
         disableWebcam();
         setTimeout(async () => {
           const track = await createCameraVideoTrack({
+            encoderConfig: "h720p_w1280p",
             optimizationMode: "motion",
-            encoderConfig: "h540p_w960p",
-            facingMode: "environment",
+            bitrateMode: "high_quality",
+            multiStream: true,
+            maxLayer: 3,
+            facingMode: "user",
             cameraId: selectedWebcam.id,
-            multiStream: false,
           });
           changeWebcam(track);
           resolve();
@@ -171,8 +174,17 @@ export function ILSContainer({
     if (micEnabled && selectedMic.id) {
       await new Promise((resolve) => {
         muteMic();
-        setTimeout(() => {
-          changeMic(selectedMic.id);
+        setTimeout(async () => {
+          const audioTrack = await createMicrophoneAudioTrack({
+            encoderConfig: "high_quality",
+            microphoneId: selectedMic.id,
+            noiseConfig: {
+              noiseSuppression: true,
+              echoCancellation: true,
+              autoGainControl: true,
+            },
+          });
+          changeMic(audioTrack);
           resolve();
         }, 500);
       });

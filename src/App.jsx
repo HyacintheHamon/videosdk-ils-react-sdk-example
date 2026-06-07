@@ -49,7 +49,8 @@ const App = () => {
               webcamEnabled: webcamOn,
               name: participantName ? participantName : "TestUser",
               mode: meetingMode,
-              multiStream: false,
+              maxResolution: "hd",
+              multiStream: true,
             }}
             token={token}
             reinitialiseMeetingOnConfigChange={true}

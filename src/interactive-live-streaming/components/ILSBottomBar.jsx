@@ -302,10 +302,12 @@ export function ILSBottomBar({
             let track;
             if (!localWebcamOn) {
               track = await createCameraVideoTrack({
+                encoderConfig: "h720p_w1280p",
                 optimizationMode: "motion",
-                encoderConfig: "h540p_w960p",
-                facingMode: "environment",
-                multiStream: false,
+                bitrateMode: "high_quality",
+                multiStream: true,
+                maxLayer: 3,
+                facingMode: "user",
                 cameraId: selectWebcamDeviceId,
               });
             }
@@ -379,10 +381,12 @@ export function ILSBottomBar({
                                           setSelectWebcamDeviceId(deviceId);
                                           const track =
                                             await createCameraVideoTrack({
+                                              encoderConfig: "h720p_w1280p",
                                               optimizationMode: "motion",
-                                              encoderConfig: "h540p_w960p",
-                                              facingMode: "environment",
-                                              multiStream: false,
+                                              bitrateMode: "high_quality",
+                                              multiStream: true,
+                                              maxLayer: 3,
+                                              facingMode: "user",
                                               cameraId: deviceId,
                                             });
                                           changeWebcam(track);
