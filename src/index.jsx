@@ -1,11 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-ReactDOM.render(
+createRoot(document.getElementById("root")).render(
   <>
     <ToastContainer
       toastClassName={() =>
@@ -25,6 +25,5 @@ ReactDOM.render(
       theme="light"
     />
     <App />
-  </>,
-  document.getElementById("root")
+  </>
 );

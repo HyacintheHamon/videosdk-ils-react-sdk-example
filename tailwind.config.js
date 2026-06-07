@@ -1,21 +1,73 @@
-const colors = require("tailwindcss/colors");
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
-  mode: "jit",
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     colors: {
-      rose: colors.rose,
-      fuchsia: colors.fuchsia,
-      indigo: colors.indigo,
-      slate: colors.slate,
-      white: colors.white,
-      black: colors.black,
-      blue: colors.blue,
-      green: colors.green,
-      red: colors.red,
-      pink: colors.pink,
+      rose: "oklch(from #f43f5e l c h / <alpha-value>)",
+      fuchsia: "oklch(from #d946ef l c h / <alpha-value>)",
+      indigo: "oklch(from #6366f1 l c h / <alpha-value>)",
+      slate: {
+        50: "#f8fafc",
+        100: "#f1f5f9",
+        200: "#e2e8f0",
+        300: "#cbd5e1",
+        400: "#94a3b8",
+        500: "#64748b",
+        600: "#475569",
+        700: "#334155",
+        800: "#1e293b",
+        900: "#0f172a",
+      },
+      white: "#ffffff",
+      black: "#000000",
+      blue: {
+        50: "#eff6ff",
+        100: "#dbeafe",
+        200: "#bfdbfe",
+        300: "#93c5fd",
+        400: "#60a5fa",
+        500: "#3b82f6",
+        600: "#2563eb",
+        700: "#1d4ed8",
+        800: "#1e40af",
+        900: "#1e3a8a",
+      },
+      green: {
+        50: "#f0fdf4",
+        100: "#dcfce7",
+        200: "#bbf7d0",
+        300: "#86efac",
+        400: "#4ade80",
+        500: "#22c55e",
+        600: "#16a34a",
+        700: "#15803d",
+        800: "#166534",
+        900: "#14532d",
+      },
+      red: {
+        50: "#fef2f2",
+        100: "#fee2e2",
+        200: "#fecaca",
+        300: "#fca5a5",
+        400: "#f87171",
+        500: "#ef4444",
+        600: "#dc2626",
+        700: "#b91c1c",
+        800: "#991b1b",
+        900: "#7f1d1d",
+      },
+      pink: {
+        50: "#fdf2f8",
+        100: "#fce7f3",
+        200: "#fbcfe8",
+        300: "#f9a8d4",
+        400: "#f472b6",
+        500: "#ec4899",
+        600: "#db2777",
+        700: "#be185d",
+        800: "#9d174d",
+        900: "#831843",
+      },
     },
     extend: {
       fontFamily: {
@@ -38,7 +90,6 @@ module.exports = {
         ],
         mono: ["Source Code Pro", "Menlo", "monospace"],
       },
-
       colors: {
         gray: {
           100: "#FFFFFF",
@@ -49,7 +100,7 @@ module.exports = {
           500: "#6F767E",
           600: "#404B53",
           650: "#202427",
-          700: "#232830", //"#26282C", //"#2B3034",
+          700: "#232830",
           750: "#1A1C22",
           800: "#050A0E",
           850: "#26282C",
@@ -105,9 +156,6 @@ module.exports = {
         },
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
